@@ -1,6 +1,8 @@
 <template>
   <div id="topbar">
-    Resume
+    <div class="wrapper">
+      <span class="logo">Resumer</span>
+    </div>
   </div>
 </template>
 
@@ -11,24 +13,27 @@
 </script>
 
 <style>
-  #topbar{
-    background:#ffffff;
-    box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
+  #topbar {
+    background: #ffffff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   }
-  #topbar>.wrapper{
+
+  #topbar > .wrapper {
     min-width: 1024px;
     max-width: 1440px;
     margin: 0 auto;
-    height:64px;
+    height: 64px;
   }
-  #topbar>.wrapper{
+
+  #topbar > .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
   }
-  #topbar .logo{
-    font-size:24px;
-    color:#000000;
+
+  #topbar .logo {
+    font-size: 24px;
+    color: #000000;
   }
 </style>
