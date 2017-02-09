@@ -33,6 +33,7 @@
 <style>
   .page {
     height: 100vh;
+    min-width: 1024px;
     display: flex;
     flex-direction: column;
     background: #EAEBEC;
