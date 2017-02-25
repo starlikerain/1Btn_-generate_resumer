@@ -45,8 +45,8 @@ export default new Vuex.Store({
                 },
             ],
             education: [
-                {school: '黄志诚警官大学', content: '本科'},
-                {school: '韩琛古惑仔高中'},
+                {school: '霍格沃兹', content: 'Gryffindor'},
+                {school: '普通高中'},
             ],
             projects: [
                 {name: 'project A', content: '文字'},
