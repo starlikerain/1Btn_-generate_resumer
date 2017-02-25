@@ -47,8 +47,8 @@
                 get(){
                     return this.$store.state.selected
                 },
-                set() {
-                    return this.$store.commit('switchTab', value)
+                set(value) {
+                    return this.$store.commit('switchTab',value)
                 }
             },
             resume (){

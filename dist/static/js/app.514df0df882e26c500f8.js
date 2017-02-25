@@ -195,7 +195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             get() {
                 return this.$store.state.selected;
             },
-            set() {
+            set(value) {
                 return this.$store.commit('switchTab', value);
             }
         },
@@ -339,6 +339,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /**
  * Created by StarLikeRain on 25/02/2017.
  */
+
 
 
 
@@ -829,6 +830,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
+// import Vue from 'vue/dist/vue.common.js'
 
 
 
@@ -842,4 +844,4 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ })
 ],[31]);
-//# sourceMappingURL=app.66b04a5fc3078b30844b.js.map
+//# sourceMappingURL=app.514df0df882e26c500f8.js.map

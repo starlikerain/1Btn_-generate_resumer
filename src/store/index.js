@@ -2,6 +2,7 @@
  * Created by StarLikeRain on 25/02/2017.
  */
 import Vue from 'vue'
+
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
