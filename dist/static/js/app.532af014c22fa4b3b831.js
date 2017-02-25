@@ -369,7 +369,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 1. 完成既定产品需求。
 2. 修复 bug`
             }],
-            education: [{ school: '黄志诚警官大学', content: '本科' }, { school: '韩琛古惑仔高中' }],
+            education: [{ school: '霍格沃兹', content: 'Gryffindor' }, { school: '普通高中' }],
             projects: [{ name: 'project A', content: '文字' }, { name: 'project B', content: '文字' }],
             awards: [{ name: '再来十瓶', content: '连续十次获得「再来一瓶」奖励' }, { name: '三好学生' }],
             contacts: [{ contact: 'phone', content: '13812345678' }, { contact: 'qq', content: '12345678' }]
@@ -844,4 +844,4 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ })
 ],[31]);
-//# sourceMappingURL=app.514df0df882e26c500f8.js.map
+//# sourceMappingURL=app.532af014c22fa4b3b831.js.map
