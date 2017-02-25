@@ -18,14 +18,17 @@
     import ResumeEditor from './components/ResumeEditor'
     import ResumePreview from './components/ResumePreview'
     import icons from './assets/icons'
+    //「想要全局数据」
+    import store from './store/index'
 
     export default {
         name: 'app',
-        data () {
-            return {
-                text: '안녕하십니까'
-            }
-        },
+//        data () {
+//            return {
+//                text: '안녕하십니까'
+//            }
+//        },
+        store,
         components: {Topbar, ResumeEditor, ResumePreview},
         created(){
             document.body.insertAdjacentHTML('afterbegin', icons)
@@ -56,7 +59,7 @@
     }
 
     #resumeEditor {
-        width: 35%;
+        min-width: 35%;
         background: #444;
     }
 

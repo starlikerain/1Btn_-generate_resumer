@@ -17,7 +17,9 @@
                     <div class="subitem" v-for="subitem in resume[item.field]">
                         <div class="resumeField" v-for="(value,key) in subitem">
                             <label> {{key}} </label>
-                            <input type="text" :value="value">
+                            <input type="text" :value="value"
+                            @input="subitem[key] = $event.target.value"
+                            >
                         </div>
                         <hr>
                     </div>
@@ -28,7 +30,9 @@
                 <!--「 v-else」-->
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label> {{key}} </label>
-                    <input type="text" v-model="resume[item.field][key]">
+                    <input type="text" v-model="resume[item.field][key]"
+                    @input="resume[item.field][key] = $event.targat.value"
+                    >
                 </div>
             </li>
         </ol>
@@ -38,46 +42,20 @@
 <script>
     export default {
         name: 'ResumeEditor',
-        data() {
-            return {
-                selected: 'profile',
-                resume: {
-                    config: [
-                        {field: 'profile', icon: 'id'},
-                        {field: 'work history', icon: 'work'},
-                        {field: 'education', icon: 'book'},
-                        {field: 'projects', icon: 'heart'},
-                        {field: 'awards', icon: 'cup'},
-                        {field: 'contacts', icon: 'phone'},
-                    ],
-                    profile: {
-                        name: '',
-                        city: '',
-                        title: ''
-                    },
-                    'work history': [
-                        {company: 'AL', content: '我的第二份工作是'},
-                        {company: 'TX', content: '我的第一份工作是'}
-                    ],
-                    education: [
-                        {school: 'AL', content: '文字'},
-                        {school: 'TX', content: '文字'}
-                    ],
-                    projects: [
-                        {school: 'project A', content: '文字'},
-                        {school: 'project B', content: '文字'}
-                    ],
-                    awards: [
-                        {school: 'awards A', content: '文字'},
-                        {school: 'awards B', content: '文字'}
-                    ],
-                    contacts: [
-                        {school: 'phone', content: '12342341514'},
-                        {school: 'QQ', content: '23141234'}
-                    ],
+        computed: {
+            selected: {
+                get(){
+                    return this.$store.state.selected
+                },
+                set() {
+                    return this.$store.commit('switchTab', value)
                 }
+            },
+            resume (){
+                return this.$store.state.resume
             }
-        }
+        },
+        methods: {}
     }
 </script>
 

@@ -7,9 +7,9 @@ webpackJsonp([0,2],[
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_router__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_components_Hello__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_components_Hello__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_components_Hello___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_components_Hello__);
 
 
@@ -31,13 +31,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 
 /* styles */
-__webpack_require__(16)
+__webpack_require__(17)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(4),
   /* template */
-  __webpack_require__(25),
+  __webpack_require__(26),
   /* scopeId */
   null,
   /* cssModules */
@@ -53,17 +53,18 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css_normalize_css__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css_normalize_css__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_normalize_css_normalize_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_normalize_css_normalize_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_reset_css__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_reset_css__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_reset_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__assets_reset_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Topbar__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Topbar__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Topbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Topbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ResumeEditor__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ResumeEditor__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ResumeEditor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ResumeEditor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ResumePreview__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ResumePreview__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ResumePreview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_ResumePreview__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__assets_icons__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__store_index__ = __webpack_require__(10);
 //
 //
 //
@@ -83,15 +84,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
+//「想要全局数据」
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'app',
-    data() {
-        return {
-            text: '안녕하십니까'
-        };
-    },
+    //        data () {
+    //            return {
+    //                text: '안녕하십니까'
+    //            }
+    //        },
+    store: __WEBPACK_IMPORTED_MODULE_6__store_index__["a" /* default */],
     components: { Topbar: __WEBPACK_IMPORTED_MODULE_2__components_Topbar___default.a, ResumeEditor: __WEBPACK_IMPORTED_MODULE_3__components_ResumeEditor___default.a, ResumePreview: __WEBPACK_IMPORTED_MODULE_4__components_ResumePreview___default.a },
     created() {
         document.body.insertAdjacentHTML('afterbegin', __WEBPACK_IMPORTED_MODULE_5__assets_icons__["a" /* default */]);
@@ -179,27 +183,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
     name: 'ResumeEditor',
-    data() {
-        return {
-            selected: 'profile',
-            resume: {
-                config: [{ field: 'profile', icon: 'id' }, { field: 'work history', icon: 'work' }, { field: 'education', icon: 'book' }, { field: 'projects', icon: 'heart' }, { field: 'awards', icon: 'cup' }, { field: 'contacts', icon: 'phone' }],
-                profile: {
-                    name: '',
-                    city: '',
-                    title: ''
-                },
-                'work history': [{ company: 'AL', content: '我的第二份工作是' }, { company: 'TX', content: '我的第一份工作是' }],
-                education: [{ school: 'AL', content: '文字' }, { school: 'TX', content: '文字' }],
-                projects: [{ school: 'project A', content: '文字' }, { school: 'project B', content: '文字' }],
-                awards: [{ school: 'awards A', content: '文字' }, { school: 'awards B', content: '文字' }],
-                contacts: [{ school: 'phone', content: '12342341514' }, { school: 'QQ', content: '23141234' }]
+    computed: {
+        selected: {
+            get() {
+                return this.$store.state.selected;
+            },
+            set() {
+                return this.$store.commit('switchTab', value);
             }
-        };
-    }
+        },
+        resume() {
+            return this.$store.state.resume;
+        }
+    },
+    methods: {}
 };
 
 /***/ }),
@@ -214,9 +218,74 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  name: 'ResumePreview'
+    name: 'ResumePreview',
+    computed: {
+        resume() {
+            return this.$store.state.resume;
+        }
+    }
 };
 
 /***/ }),
@@ -260,9 +329,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuex__);
+/**
+ * Created by StarLikeRain on 25/02/2017.
+ */
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex___default.a);
+
+/* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_1_vuex___default.a.Store({
+    state: {
+        count: 0,
+        selected: 'profile',
+        resume: {
+            config: [{ field: 'profile', icon: 'id' }, { field: 'workHistory', icon: 'work' }, { field: 'education', icon: 'book' }, { field: 'projects', icon: 'heart' }, { field: 'awards', icon: 'cup' }, { field: 'contacts', icon: 'phone' }],
+            profile: {
+                name: '彭',
+                city: '地球城',
+                title: '末端装逼师',
+                birthday: '1995-08-29'
+            },
+            'work history': [{ company: 'AL', content: '我的第二份工作是' }, { company: 'TX', content: '我的第一份工作是' }],
+            workHistory: [{
+                company: 'roadhog', content: `公司总部设在XXXX区，先后在北京、上海成立分公司。专注于移动XXX领域，主打产品XXXXX，它将资讯、报纸、杂志、图片、微信等众多内容，按照用户意愿聚合到一起，实现深度个性化 定制。
+我的主要工作如下:
+1. 完成既定产品需求。
+2. 修复 bug。`
+            }, {
+                company: '狗急跳墙责任有限公司', content: `公司总部设在XXXX区，先后在北京、上海成立分公司。专注于移动XXX领域，主打产品XXXXX，它将资讯、报纸、杂志、图片、微信等众多内容，按照用户意愿聚合到一起，实现深度个性化 定制。
+我的主要工作如下:
+1. 完成既定产品需求。
+2. 修复 bug`
+            }],
+            education: [{ school: '黄志诚警官大学', content: '本科' }, { school: '韩琛古惑仔高中' }],
+            projects: [{ name: 'project A', content: '文字' }, { name: 'project B', content: '文字' }],
+            awards: [{ name: '再来十瓶', content: '连续十次获得「再来一瓶」奖励' }, { name: '三好学生' }],
+            contacts: [{ contact: 'phone', content: '13812345678' }, { contact: 'qq', content: '12345678' }]
+        }
+    },
+    mutations: {
+        switchTab(state, payload) {
+            state.selected = payload;
+        }
+    }
+});
 
 /***/ }),
 /* 11 */
@@ -302,25 +419,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 17 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-
-/* styles */
-__webpack_require__(14)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(5),
-  /* template */
-  __webpack_require__(23),
-  /* scopeId */
-  "data-v-76eee461",
-  /* cssModules */
-  null
-)
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 18 */
@@ -332,11 +433,11 @@ __webpack_require__(15)
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(6),
+  __webpack_require__(5),
   /* template */
   __webpack_require__(24),
   /* scopeId */
-  "data-v-77bcbfbb",
+  "data-v-76eee461",
   /* cssModules */
   null
 )
@@ -350,15 +451,15 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(13)
+__webpack_require__(16)
 
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(7),
+  __webpack_require__(6),
   /* template */
-  __webpack_require__(22),
+  __webpack_require__(25),
   /* scopeId */
-  null,
+  "data-v-77bcbfbb",
   /* cssModules */
   null
 )
@@ -372,13 +473,35 @@ module.exports = Component.exports
 
 
 /* styles */
-__webpack_require__(12)
+__webpack_require__(14)
+
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(7),
+  /* template */
+  __webpack_require__(23),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(13)
 
 var Component = __webpack_require__(0)(
   /* script */
   __webpack_require__(8),
   /* template */
-  __webpack_require__(21),
+  __webpack_require__(22),
   /* scopeId */
   "data-v-1f4b5f1f",
   /* cssModules */
@@ -389,7 +512,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -411,7 +534,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -419,11 +542,116 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "resumePreview"
     }
-  }, [_vm._v("\n  I am resumePreview\n")])
+  }, [_c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.profile),
+      expression: "resume.profile"
+    }],
+    attrs: {
+      "data-name": "profile"
+    }
+  }, [_c('h1', [_vm._v("\n            " + _vm._s(_vm.resume.profile.name) + "\n        ")]), _vm._v(" "), _c('h2', [_vm._v(_vm._s(_vm.resume.profile.title))]), _vm._v(" "), _c('p', [_c('small', [_vm._v(_vm._s(_vm.resume.profile.city))]), _vm._v(" "), _c('small', [_vm._v(_vm._s(_vm.resume.profile.birthday))])])]), _vm._v(" "), _c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.education),
+      expression: "resume.education"
+    }],
+    attrs: {
+      "data-name": "projects"
+    }
+  }, [_c('h2', [_vm._v("项目经历")]), _vm._v(" "), _c('ol', _vm._l((_vm.resume.projects), function(item) {
+    return _c('li', [_c('h3', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('p', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (item.content),
+        expression: "item.content"
+      }]
+    }, [_vm._v(" " + _vm._s(item.content) + " ")])])
+  }))]), _vm._v(" "), _c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.workHistory),
+      expression: "resume.workHistory"
+    }],
+    attrs: {
+      "data-name": "workHistory"
+    }
+  }, [_c('h2', [_vm._v("工作经历")]), _vm._v(" "), _c('ol', _vm._l((_vm.resume.workHistory), function(item) {
+    return _c('li', [_c('h3', [_vm._v(_vm._s(item.company))]), _vm._v(" "), _c('p', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (item.content),
+        expression: "item.content"
+      }]
+    }, [_vm._v(" " + _vm._s(item.content) + " ")])])
+  }))]), _vm._v(" "), _c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.education),
+      expression: "resume.education"
+    }],
+    attrs: {
+      "data-name": "education"
+    }
+  }, [_c('h2', [_vm._v("毕业院校")]), _vm._v(" "), _c('ol', _vm._l((_vm.resume.education), function(item) {
+    return _c('li', [_c('h3', [_vm._v(_vm._s(item.school) + "\n                    "), _c('span', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (item.content),
+        expression: "item.content"
+      }]
+    }, [_vm._v(" - " + _vm._s(item.content) + " ")])])])
+  }))]), _vm._v(" "), _c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.awards),
+      expression: "resume.awards"
+    }],
+    attrs: {
+      "data-name": "awards"
+    }
+  }, [_c('h2', [_vm._v("获奖情况")]), _vm._v(" "), _c('ol', _vm._l((_vm.resume.awards), function(item) {
+    return _c('li', [_c('h3', [_vm._v(_vm._s(item.name))]), _vm._v(" "), _c('p', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (item.content),
+        expression: "item.content"
+      }]
+    }, [_vm._v(" " + _vm._s(item.content) + " ")])])
+  }))]), _vm._v(" "), _c('section', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.resume.contacts),
+      expression: "resume.contacts"
+    }],
+    attrs: {
+      "data-name": "contacts"
+    }
+  }, [_c('h2', [_vm._v("联系方式")]), _vm._v(" "), _c('table', _vm._l((_vm.resume.contacts), function(item) {
+    return _c('tr', [_c('td', [_vm._v(_vm._s(item.contact))]), _vm._v(" "), _c('td', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (item.content),
+        expression: "item.content"
+      }]
+    }, [_vm._v(" " + _vm._s(item.content))])])
+  }))])])
 },staticRenderFns: []}
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -482,7 +710,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -530,6 +758,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           },
           domProps: {
             "value": value
+          },
+          on: {
+            "input": function($event) {
+              subitem[key] = $event.target.value
+            }
           }
         })])
       }), _vm._v(" "), _c('hr')], 2)
@@ -550,7 +783,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           "value": _vm._s(_vm.resume[item.field][key])
         },
         on: {
-          "input": function($event) {
+          "input": [function($event) {
             if ($event.target.composing) { return; }
             var $$exp = _vm.resume[item.field],
               $$idx = key;
@@ -559,7 +792,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             } else {
               $$exp.splice($$idx, 1, $event.target.value)
             }
-          }
+          }, function($event) {
+            _vm.resume[item.field][key] = $event.targat.value
+          }]
         }
       })])
     })], 2)
@@ -567,7 +802,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -577,10 +812,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: []}
 
 /***/ }),
-/* 26 */,
 /* 27 */,
 /* 28 */,
-/* 29 */
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -605,5 +841,5 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 });
 
 /***/ })
-],[29]);
-//# sourceMappingURL=app.2e9f0deefddd9f748c8f.js.map
+],[31]);
+//# sourceMappingURL=app.66b04a5fc3078b30844b.js.map
