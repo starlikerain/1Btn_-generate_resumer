@@ -4,6 +4,7 @@
 import Vue from 'vue'
 
 import Vuex from 'vuex'
+import objectPath from 'object-path'
 
 Vue.use(Vuex)
 
@@ -63,8 +64,21 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        initState(state, payload) {
+            console.log('initState in index.js')
+            console.log('state  : ', state)
+            console.log('payload  : ', payload)
+            Object.assign(state, payload)
+        },
         switchTab(state, payload){
             state.selected = payload
+            localStorage.setItem('state', JSON.stringify(state))
+        },
+        updateResume(state, {path, value}){
+            console.log(path)
+            objectPath.set(state.resume, path, value);
+            localStorage.setItem('state', JSON.stringify(state))
+            // state.resume[field][subField] = value
         }
     }
 })

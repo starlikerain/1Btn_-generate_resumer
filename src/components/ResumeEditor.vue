@@ -14,11 +14,11 @@
             <li v-for="item in resume.config" v-show="item.field === selected">
                 <!--「需要判断数据是Array或Object」-->
                 <div v-if="resume[item.field] instanceof Array">
-                    <div class="subitem" v-for="subitem in resume[item.field]">
+                    <div class="subitem" v-for="(subitem,i) in resume[item.field]" >
                         <div class="resumeField" v-for="(value,key) in subitem">
                             <label> {{key}} </label>
                             <input type="text" :value="value"
-                            @input="subitem[key] = $event.target.value"
+                                   @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)"
                             >
                         </div>
                         <hr>
@@ -30,8 +30,8 @@
                 <!--「 v-else」-->
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label> {{key}} </label>
-                    <input type="text" v-model="resume[item.field][key]"
-                    @input="resume[item.field][key] = $event.targat.value"
+                    <input type="text" :value="resume[item.field][key]"
+                           @input="changeResumeField(`${item.field}.${key}`, $event.target.value)"
                     >
                 </div>
             </li>
@@ -48,14 +48,18 @@
                     return this.$store.state.selected
                 },
                 set(value) {
-                    return this.$store.commit('switchTab',value)
+                    return this.$store.commit('switchTab', value)
                 }
             },
             resume (){
                 return this.$store.state.resume
             }
         },
-        methods: {}
+        methods: {
+            changeResumeField (path, value) {
+                return this.$store.commit('updateResume', {path, value})
+            }
+        }
     }
 </script>
 

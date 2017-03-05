@@ -32,6 +32,12 @@
         components: {Topbar, ResumeEditor, ResumePreview},
         created(){
             document.body.insertAdjacentHTML('afterbegin', icons)
+            let state = localStorage.getItem('state')
+            if (state) {
+                console.log('exist')
+                state = JSON.parse(state)
+            }
+            this.$store.commit('initState', state)
         }
     }
 </script>
