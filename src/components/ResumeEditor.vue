@@ -23,11 +23,8 @@
                         </div>
                         <hr>
                     </div>
+                    <button @click="addResumeSubfield(item.field)">新增</button>
                 </div>
-                <!--{{resume[item.field]}}-->
-                <!--「 { "name": "", "city": "", "title": "" } 」-->
-
-                <!--「 v-else」-->
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label> {{key}} </label>
                     <input type="text" :value="resume[item.field][key]"
@@ -58,6 +55,9 @@
         methods: {
             changeResumeField (path, value) {
                 return this.$store.commit('updateResume', {path, value})
+            },
+            addResumeSubfield (field) {
+                this.$store.commit('addResumeSubfield',{field})
             }
         }
     }

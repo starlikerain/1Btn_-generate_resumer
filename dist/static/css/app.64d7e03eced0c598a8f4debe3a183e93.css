@@ -528,7 +528,7 @@ template {
     font-size: 24px;
     color: #000000;
 }
-button[data-v-1f4b5f1f] {
+.button[data-v-1f4b5f1f] {
   width: 72px;
   height: 32px;
   border: none;
@@ -536,13 +536,62 @@ button[data-v-1f4b5f1f] {
   font-size: 18px;
   background: #ddd;
   color: #222;
+  text-decoration: none;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  vertical-align: middle;
 }
-button[data-v-1f4b5f1f]:hover {
+.button[data-v-1f4b5f1f]:hover {
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
-button.primary[data-v-1f4b5f1f] {
+.button.primary[data-v-1f4b5f1f] {
     background: #02af5f;
     color: white;
+}
+.actions[data-v-1f4b5f1f] {
+  display: -ms-flexbox;
+  display: flex;
+}
+.actions .userActions[data-v-1f4b5f1f] {
+    margin-right: 3em;
+}
+.actions .userActions .welcome[data-v-1f4b5f1f] {
+      margin-right: .5em;
+}
+
+.dialogWrapper[data-v-56d56555] {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.25);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.dialog[data-v-56d56555] {
+  background-color: white;
+  min-height: 4em;
+  min-width: 10em;
+}
+.dialog > header[data-v-56d56555] {
+    padding: 16px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+}
+.dialog > main[data-v-56d56555] {
+    padding: 16px;
 }
 
 #resumeEditor[data-v-77bcbfbb] {
@@ -676,4 +725,4 @@ a[data-v-76eee461] {
   color: #42b983;
 }
 
-/*# sourceMappingURL=app.465201868bbc1700574ce72586b8c027.css.map*/
+/*# sourceMappingURL=app.64d7e03eced0c598a8f4debe3a183e93.css.map*/

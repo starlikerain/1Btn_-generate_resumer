@@ -1,12 +1,15 @@
 <template>
-    <div class=page>
-        <header>
-            <Topbar/>
-        </header>
-        <main>
-            <ResumeEditor/>
-            <ResumePreview/>
-        </main>
+    <div>
+        <div class=page>
+            <header>
+                <Topbar/>
+            </header>
+            <main>
+                <ResumeEditor/>
+                <ResumePreview/>
+            </main>
+        </div>
+        <Dialog/>
     </div>
 </template>
 
@@ -20,6 +23,8 @@
     import icons from './assets/icons'
     //「想要全局数据」
     import store from './store/index'
+    import AV from './lib/leancloud'
+    import getAVUser from './lib/getAVUser'
 
     export default {
         name: 'app',
@@ -38,6 +43,7 @@
                 state = JSON.parse(state)
             }
             this.$store.commit('initState', state)
+            this.$store.commit('setUser', getAVUser())
         }
     }
 </script>
