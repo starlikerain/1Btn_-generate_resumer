@@ -27,7 +27,7 @@ __WEBPACK_IMPORTED_MODULE_0_leancloud_storage___default.a.init({
 
 /* harmony default export */ __webpack_exports__["a"] = function (user) {
     var { id, attributes: { username } } = user || __WEBPACK_IMPORTED_MODULE_0__lib_leancloud__["a" /* default */].User.current() || { attributes: {} };
-    return { id, username };
+    return { id: id || '', username: username || '' };
 };
 
 /***/ }),
@@ -1294,6 +1294,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         })])
       }), _vm._v(" "), _c('hr')], 2)
     }), _vm._v(" "), _c('button', {
+      staticClass: "addNew",
       on: {
         "click": function($event) {
           _vm.addResumeSubfield(item.field)
@@ -1428,4 +1429,4 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 
 /***/ })
 ],[52]);
-//# sourceMappingURL=app.5790c92686aa531bbcbb.js.map
+//# sourceMappingURL=app.b85e00ea76276555f671.js.map

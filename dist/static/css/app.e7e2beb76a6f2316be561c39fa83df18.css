@@ -658,6 +658,12 @@ hr[data-v-77bcbfbb] {
   border-top: 1px solid #ddd;
   margin: 24px 0;
 }
+button.addNew[data-v-77bcbfbb] {
+  background-color: #f2510f;
+  padding: 5px;
+  border: none;
+  color: white;
+}
 
 #resumePreview {
   background: white;
@@ -725,4 +731,4 @@ a[data-v-76eee461] {
   color: #42b983;
 }
 
-/*# sourceMappingURL=app.64d7e03eced0c598a8f4debe3a183e93.css.map*/
+/*# sourceMappingURL=app.e7e2beb76a6f2316be561c39fa83df18.css.map*/

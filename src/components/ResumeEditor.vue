@@ -23,7 +23,7 @@
                         </div>
                         <hr>
                     </div>
-                    <button @click="addResumeSubfield(item.field)">新增</button>
+                    <button class="addNew" @click="addResumeSubfield(item.field)">新增</button>
                 </div>
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
                     <label> {{key}} </label>
@@ -130,5 +130,12 @@
         border: none;
         border-top: 1px solid #ddd;
         margin: 24px 0;
+    }
+
+    button.addNew {
+        background-color: #f2510f;
+        padding: 5px;
+        border: none;
+        color: white;
     }
 </style>
