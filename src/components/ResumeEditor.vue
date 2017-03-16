@@ -1,5 +1,6 @@
 <template>
     <div id="resumeEditor">
+        <!--<p>{{ $t("message.hello") }}</p>-->
         <nav>
             <ol>
                 <li v-for="(item,index) in resume.config" :class="{active: item.field === selected}"
@@ -15,18 +16,21 @@
                 <!--「需要判断数据是Array或Object」-->
                 <div v-if="resume[item.field] instanceof Array">
                     <div class="subitem" v-for="(subitem,i) in resume[item.field]" >
+
                         <div class="resumeField" v-for="(value,key) in subitem">
-                            <label> {{key}} </label>
+                            <label>{{$t(`resume.${item.field}.${key}`)}} </label>
                             <input type="text" :value="value"
                                    @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)"
                             >
                         </div>
+                        <button class="delThis" @click="delResumeSubfield(`${item.field}.${i}`)">删除</button>
                         <hr>
+
                     </div>
                     <button class="addNew" @click="addResumeSubfield(item.field)">新增</button>
                 </div>
                 <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
-                    <label> {{key}} </label>
+                    <label> {{$t(`resume.profile.${key}`)}}</label>
                     <input type="text" :value="resume[item.field][key]"
                            @input="changeResumeField(`${item.field}.${key}`, $event.target.value)"
                     >
@@ -58,6 +62,10 @@
             },
             addResumeSubfield (field) {
                 this.$store.commit('addResumeSubfield',{field})
+            },
+            delResumeSubfield(path){
+                // 『 BUG - 发现如果删完整个人都不好了 』
+                this.$store.commit('delResumeSubfield',{path})
             }
         }
     }

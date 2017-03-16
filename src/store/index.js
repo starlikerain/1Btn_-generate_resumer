@@ -17,48 +17,53 @@ export default new Vuex.Store({
         },
         resume: {
             config: [
-                { field: 'profile', icon: 'id' },
-                { field: 'workHistory', icon: 'work' },
-                { field: 'education', icon: 'book' },
-                { field: 'projects', icon: 'heart' },
-                { field: 'awards', icon: 'cup' },
-                { field: 'contacts', icon: 'phone' },
+                {field: 'profile', icon: 'id'},
+                {field: 'workHistory', icon: 'work'},
+                {field: 'education', icon: 'book'},
+                {field: 'projects', icon: 'heart'},
+                {field: 'awards', icon: 'cup'},
+                {field: 'contacts', icon: 'phone'}
             ],
             profile: {
                 name: '',
-                city: '气球',
-                title: '一个不合格的不全栈工程师',
-                birthday: '1995-08-29'
+                city: '',
+                title: '',
+                birthday: ''
             },
-            workHistory: [
-                {
-                    company: '旧概念', content: `公司总部设在XXXX区`
-                }
-            ],
-            education: [
-                { school: '三里屯', content: '本科' }
-            ],
-            projects: [
-                { name: 'project A', content: '文字' }
-            ],
-            awards: [
-                { name: '再来十瓶', content: '连续十次获得「再来一瓶」奖励' }
-            ],
-            contacts: [
-                { contact: 'phone', content: '13812345678' }
-            ],
+            workHistory: [],
+            education: [],
+            projects: [],
+            awards: [],
+            contacts: [],
         },
         resumeConfig: [
             {field: 'profile', icon: 'id', keys: ['name', 'city', 'title', 'birthday']},
-            {field: 'workHistory', icon: 'work', keys: ['company', 'content']},
-            {field: 'education', icon: 'book', keys: ['school', 'content']},
-            {field: 'projects', icon: 'heart', keys: ['name', 'content']},
-            {field: 'awards', icon: 'cup', keys: ['name', 'content']},
-            {field: 'contacts', icon: 'phone', keys: ['contact', 'content']}
+            {field: 'workHistory', icon: 'work', keys: ['company', 'details']},
+            {field: 'education', icon: 'book', keys: ['school', 'details']},
+            {field: 'projects', icon: 'heart', keys: ['name', 'details']},
+            {field: 'awards', icon: 'cup', keys: ['name', 'details']},
+            {field: 'contacts', icon: 'phone', keys: ['contact', 'details']}
         ]
     },
     mutations: {
+        // 『 app.vue 初始化的时候调用 』
         initState(state, payload){
+            // state.resume.config.map((item)=>{
+            //     console.log(item)
+            //     debugger
+            //     if(item.type === 'array'){
+            //         //state.resume[item.field] = [] // 这样写 Vue 无法监听属性变化
+            //         Vue.set(state.resume, item.field, [])
+            //     }else{
+            //         //state.resume[item.field] = {} // 这样写 Vue 无法监听属性变化
+            //         Vue.set(state.resume, item.field, {})
+            //         item.keys.map((key)=>{
+            //             //state.resume[item.field][key] = '' // 这样写 Vue 无法监听属性变化
+            //             Vue.set(state.resume[item.field], key, '')
+            //         })
+            //     }
+            // })
+
             Object.assign(state, payload)
         },
         switchTab(state, payload) {
@@ -81,6 +86,10 @@ export default new Vuex.Store({
             state.resumeConfig.filter((i) => i.field === field)[0].keys.map((key) => {
                 Vue.set(empty, key, '')
             })
+        },
+        delResumeSubfield(state, {path}){
+            // 『删除哦』
+            objectPath.del(state.resume, path);
         }
     }
 })

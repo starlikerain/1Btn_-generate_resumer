@@ -39,9 +39,10 @@
             document.body.insertAdjacentHTML('afterbegin', icons)
             let state = localStorage.getItem('state')
             if (state) {
-                console.log('exist')
+                console.log('app.vue exist immediately')
                 state = JSON.parse(state)
             }
+//            『先不让存储』
             this.$store.commit('initState', state)
             this.$store.commit('setUser', getAVUser())
         }
